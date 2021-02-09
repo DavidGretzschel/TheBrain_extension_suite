@@ -1,10 +1,13 @@
 # TheBrain_extension_suite
 
-Install AutoHotKey.
+Install AutoHotKey 1.1.
+https://www.autohotkey.com/download/
+
+Clone this repo.
 
 Execute tb_main.ahk.
 
-Ensure that Notes Editor>"smart quote"-setting is disabled.
+Ensure that Settings>Notes Editor>"smart quote" is disabled.
 
 Select text in a Note and press:
 
