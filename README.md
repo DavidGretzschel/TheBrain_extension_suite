@@ -39,3 +39,6 @@ alt l [follow text-link in new Content-maximized window]
 
 They will only work with my specific keybindings or by adpating the code in a few places with your own.
 My keybindings/explanation how to modify will be added later.
+
+v0.3
+Modified keyboard shortcuts and made conflict-free with defaults. This should be much easier to learn, now.
