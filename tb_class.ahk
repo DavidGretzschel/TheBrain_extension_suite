@@ -1,11 +1,93 @@
 class TB {
 
+
+; getting fancy selection back
+
+
+
+textlink_follow(function){
+   WinGetPos, X, Y, Width, Height, A
+   TB.take_action()
+   Sleep,1500
+   TB[function]()
+   Sleep,1500
+   TB.fix_caller_window_and_return()
+   Sleep,1500
+   WinMove, A,, X+Width, Y, Width, Height
+   TB.keyboard_Focus_to_Notes()
+}
+
+
+
+open_attachment_from_search(function){
+   TB.select_seach_entry()
+   TB[function]()
+   TB.fix_caller_window_and_return()
+}
+
+
+open_new_window_from_search(function){
+   TB.select_seach_entry()
+   TB[function]()
+   Sleep,1500
+   TB.fix_caller_window_and_return()
+}
+
+open_search_entry_v2(function){
+   TB[function]()
+   Sleep,1000
+}
+
+test_function(){
+   MsgBox, Testing whether function objects work
+}
+
+open_search_entry(type,mode){
+   if(type="textlink")
+      TB.take_action()
+   else 
+   if(mode=="extra-Plex-window")
+      TB.open_Thought_maximized_Plex()
+   else if(mode=="extra-Content-window")
+      Tb.Content_In_New_Window()
+   else TB.open_Attachment()
+   Sleep,1000
+   TB.fix_caller_window_and_return()
+   if(type="textlink" && mode="extra-Content-window"){
+      Sleep,1000
+      TB.keyboard_Focus_to_Notes()
+      }
+   }
+   ; TB component functions
+   fix_caller_window_and_return(){
+      TB.switch_to_previous_window_and_move_current_to_bottom()
+      Sleep,200
+      TB.Backward()
+      TB.switch_to_bottom_window()
+   }
+   ; window-stack shortcuts
+   
+   switch_to_bottom_window(){
+      Send,+!{Tab}
+   }
+
+   switch_to_previous_window_and_move_current_to_bottom(){
+      Send,!{Esc}
+   }
+
+
+
+select_seach_entry(){
+      Send,{Enter}
+   }
+
+
   ; newly added keycombi
   copy_local_Thought_url(){
      Send,^!k
   }
   
-   ; composite functions mainly Markdown and stuff
+; composite functions mainly Markdown and stuff
   
  open_Thought_maximized_Plex(){
       Tb.open_Thought_in_new_window()
@@ -13,18 +95,47 @@ class TB {
       TB.Splitter_right_or_down()   
    }
  
-   focussed_Thought_Content_max(){
+focussed_Thought_Content_max(){
       Send,{Enter}
       TB.Splitter_left_or_up()
       TB.Splitter_left_or_up()
 }
+
+
+multi_markdown(family := false, size := false, color := false, bg_color := false){
+   TB.cut()
+	TB.markdown_opening()
+	TB.paste()
+   TB.markdown_start_attribute_list()
+	if(family){
+      SendRaw,font-family:
+      Send,%family%
+      TB.markdown_extra_attribute()
+   }
+   if(size){
+	   SendRaw,font-size:
+      Send,%size%`%
+      TB.markdown_extra_attribute()
+   }
+   if(color){
+	   SendRaw,color:#
+	   Send,%color%
+      TB.markdown_extra_attribute()
+   }
+   if(bg_color){
+      SendRaw,background-color:#
+	   Send,%bg_color%
+   }
+	TB.markdown_close()
+}
+
 
 font_color_selection(font_color){
 	SetKeyDelay, 5
 	TB.cut()
 	TB.markdown_opening()
 	TB.paste()
-	TB.markdown_start_style()
+	TB.markdown_start_attribute_list()
 	TB.markdown_color(font_color)
 	TB.markdown_close()
 }
@@ -34,7 +145,7 @@ markdown_opening(){
 	;Send,:{{}
 }
 
-markdown_start_style(){
+markdown_start_attribute_list(){
 	Send,:(style="
 }
 
@@ -43,9 +154,16 @@ markdown_color(font_color){
 	SendRaw,color:#
 	Send,%font_color%
 }
+markdown_extra_attribute(){
+   SendRaw,`;
+}
 
+markdown_attribute_end(){
+   SendRaw,"):
+}
 markdown_close(){
-	SendRaw,"):}:
+	TB.markdown_attribute_end()
+   SendRaw,}:
 	;Send,"):{}}:
 }
 
