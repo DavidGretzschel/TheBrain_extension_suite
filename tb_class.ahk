@@ -203,6 +203,70 @@ markdown_close(){
 		Send,F8
 	}
 
+
+; pin navigation
+	Navigation_to_Pin_1(){
+		Send,^1
+	}
+	Navigation_to_Pin_2(){
+		Send,^2
+	}
+	Navigation_to_Pin_3(){
+		Send,^3
+	}
+	Navigation_to_Pin_4(){
+		Send,^4
+	}
+	Navigation_to_Pin_5(){
+		Send,^5
+	}
+	Navigation_to_Pin_6(){
+		Send,^6
+	}
+	Navigation_to_Pin_7(){
+		Send,^7
+	}
+	Navigation_to_Pin_8(){
+		Send,^8
+	}
+
+   Collapse_All(){
+		Send,^9
+	}
+	Expand_All(){
+		Send,^0
+	}
+	
+	Preferences(){
+		Send,^,
+	}
+	Normal(){
+		Send,^+1
+	}
+	Outline(){
+		Send,^+2
+	}
+
+   Mind_Map(){
+		Send,^+3
+	}
+
+
+   Activate_Tag(){
+		Send,^g
+	}
+	Activate_Type(){
+		Send,^e
+	}
+
+   Web_Search(){
+		Send,{F4}}
+	}
+
+   Forget(){
+		Send,^{Del}
+	}
+
 	; essential Notes-commands
 
 	insert_time(){
@@ -271,6 +335,14 @@ markdown_close(){
 	Find_and_Replace(){
 		Send,^f
 		}
+
+   Find_next(){
+     Send,{F3}
+   }
+
+   Find_previous(){
+     Send,{F3}
+   }
 	Paste_Alternate(){
 		Send,^+v
 		}
@@ -350,63 +422,7 @@ select_to_end_of_document(){
 
 
 
-; remapped default bindings
-	Navigation_to_Pin_1(){
-		Send,!1
-	}
-	Navigation_to_Pin_2(){
-		Send,!2
-	}
-	Navigation_to_Pin_3(){
-		Send,!3
-	}
-	Navigation_to_Pin_4(){
-		Send,!4
-	}
-	Navigation_to_Pin_5(){
-		Send,!5
-	}
-	Navigation_to_Pin_6(){
-		Send,!6
-	}
-	Navigation_to_Pin_7(){
-		Send,!7
-	}
-	Navigation_to_Pin_8(){
-		Send,!8
-	}
 	
-	Activate_Tag(){
-		Send,^!+,
-	}
-	Activate_Type(){
-		Send,^!+.
-	}
-	Collapse_All(){
-		Send,!z
-	}
-	Expand_All(){
-		Send,!x
-	}
-	Mind_Map(){
-		Send,!d
-	}
-	Preferences(){
-		Send,^!,
-	}
-	Normal(){
-		Send,!a
-	}
-	Outline(){
-		Send,!s
-	}
-	Forget(){
-		Send,^!+8
-	}
-
-	Web_Search(){
-		Send,^!+9
-	}
 
 ; added commands
 
@@ -416,38 +432,34 @@ select_to_end_of_document(){
 	}
 
 ; search and replace
-	Find_Next(){
-		Send,{F12}
-		}
-	Find_Previous(){
-		Send,+{F12}
-		}
-	Replace_Next(){
+	
+   Replace_Next(){
 		Send,!{F12}
 		}
 	Replace_Previous(){
 		Send,!+{F12}
 		}
 
-; control numbers
+; alt number row
 	Toggle_Pin(){
-		Send,^`
+		Send,!`
 		}
 	Paste_as_New(){
-		Send,^1
+		Send,!1
 		}
 	Paste_on_Item(){
-		Send,^2
-		}
-	Unlink(){
-		Send,^3
+		Send,!2
 		}
 	convert_Thought_between(){
-		Send,^4
+		Send,!3
 		}
-
+   
+   Unlink(){
+		Send,!4
+		}
+	
 	Link_to_File(){
-		Send,^5
+		Send,!5
 		}
 	
 	add_Markdown_file(){
@@ -455,11 +467,9 @@ select_to_end_of_document(){
 	}
 	
 	Link_to_Folder(){
-		Send,^8
+		Send,!8
 		}
-	Set_as_HomeThought(){
-		Send,^9
-		}
+	
 
 ; Attachments
 
@@ -480,9 +490,6 @@ select_to_end_of_document(){
 
 ; links
 	Select_Link(){
-		Send,^,
-		}
-	Link_Properties(){
 		Send,^.
 		}
 
@@ -492,6 +499,7 @@ select_to_end_of_document(){
 	Clear_Selection(){
 		Send,!w
 		}
+
 ; Selection
 	Selection_Unlink_Selection(){
 		Send,!r
@@ -548,21 +556,31 @@ select_to_end_of_document(){
 		Send,^!/
 		}
 
-	toggle_Title(){
-		Send,^+1
-	}
-	toggle_Footer(){
-		Send,^+2
-	}
+; ctrl shift row extended
+	
 	toggle_siblings(){
-		Send,^+3
-	}
-	toggle_fogotten(){
 		Send,^+4
 	}
-	toggle_private(){
+	toggle_fogotten(){
 		Send,^+5
 	}
+	toggle_private(){
+		Send,^+6
+	}
+
+   toggle_Title(){
+		Send,^+7
+	}
+
+	toggle_backlinks(){
+		Send,^+8
+	}
+
+   toggle_unlinked_mentions(){
+		Send,^+9
+	}
+
+
 ; Markdown/Note stuff
 	strikethru(){
 		Send,^m
@@ -609,5 +627,11 @@ select_to_end_of_document(){
 	move_tab_to_new_window(){
 		Send,!+0
 	}
+   
+   /*
+   Set_as_HomeThought(){
+		Send,^9
+		}
+   */
 
 }

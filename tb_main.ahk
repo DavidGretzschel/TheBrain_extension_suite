@@ -5,12 +5,12 @@
 
 ; hotkeys
 #If WinActive("TheBrain")
-   ;+!a::TB.multi_markdown("Lobster",120,red,green)
    +!a::TB.multi_markdown(,,red)
-   +!s::TB.font_color_selection(yellow)
-   +!d::TB.font_color_selection(green)
-   +!f::TB.font_color_selection(orange)
-   +!g::TB.font_color_selection(teal)
+   +!s::TB.multi_markdown(,,yellow)
+   +!d::TB.multi_markdown(,,green)
+   +!f::TB.multi_markdown(,,orange)
+   +!g::TB.multi_markdown(,,teal)
+   +!h::TB.multi_markdown("Lobster",120,red,green)
    ^+,::TB.open_Thought_maximized_Plex()
 ; fancy new opener-commands, still in v2 format
    
