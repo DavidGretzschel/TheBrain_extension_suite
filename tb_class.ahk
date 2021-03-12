@@ -248,17 +248,25 @@ trying to make this read by keystroke vis
 
    open_new_window_from_search(function){
       TB.select_seach_entry()
+      ; calss either content or plex maximized
       TBK[function]()
-      Sleep,1500
+      TB[function]()
+      Sleep, 500
+      WM.normalize_window()
+      Sleep,1000
       TB.fix_caller_window_and_return()
       }
 
    fix_caller_window_and_return(){
-      WinGetTitle, nice_title_output, ahk_pid
-      WM.switch_to_previous_window_and_move_current_to_bottom()
+      ; pid does not work
+      ;WinGetTitle, nice_title_output, ahk_pid
+      Send,!{Tab}
+      ;WM.switch_to_previous_window_and_move_current_to_bottom()
       Sleep,200
       TBK.Backward()
-      WinActivate, ahk_pid %nice_title_output%
+      Sleep, 1400
+      ;WinActivate, ahk_pid %nice_title_output%
+      Send,!{Tab}
       }
    
    select_seach_entry(){

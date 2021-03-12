@@ -440,7 +440,7 @@ class TBK{
 		}
 ; more window navigation
    presentation_mode(){
-      Send,{F11}
+      Send,^+p
       }
    Content_In_New_Window(){
 		Send,^+m
@@ -451,11 +451,11 @@ class TBK{
 	   }
 
 	duplicate_Tab(){
-		Send,!+9
+		Send,^!+]
 	   }
 ; depracted for keyspace or was it alt shift o?
 	move_tab_to_new_window(){
-		Send,!+0
+		Send,^!+[
 	   }
 
    copy_local_Thought_url(){
